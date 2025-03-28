@@ -12,63 +12,44 @@
 </head>
 
 <body>
-  <main>
-    <!-- Logo -->
-    <header>
-      <h1><img src="./images/logo.svg" alt="logo-for-calculator" class="logo" /></h1>
-    </header>
-
-    <!-- Main Content -->
-    <section class="tip-calculator">
-      <!-- Left Section: Input Form -->
-      <section class="input-section">
-        <form id="bill-form" class="input-container">
-          <label for="bill-amount">Bill</label>
-          <input class="input-field bill-input" type="number" name="amount" id="bill" placeholder="0" aria-label="bill-amount" min="0" />
-        </form>
-
-        <!-- Tip Percentage Selection -->
-        <form class="tip-selection">
-          <label>Select Tip %</label>
-          <div class="tip">
-            <button type="button" class="tip-btn" data-tip="5">5%</button>
-            <button type="button" class="tip-btn" data-tip="10">10%</button>
-            <button type="button" class="tip-btn" data-tip="15">15%</button>
-            <button type="button" class="tip-btn" data-tip="25">25%</button>
-            <button type="button" class="tip-btn" data-tip="50">50%</button>
-            <input id="custom-tip" class="custom-tip" type="number" max="100" placeholder="Custom" aria-label="enter-custom-tip" />
+  <div class="logo"><img src="images/logo.svg" alt="Logo"></div>
+  <div class="tip-calculator">
+    <div class="partOne">
+      <label for="bill">Bill</label>
+      <input type="number" class="input bill-input" id="bill" placeholder="0" aria-label="bill-amount" min="0" />
+      <label for="tip">Select Tip %</label>
+      <div class="tip">
+          <div class="tips" data-tip="5">5%</div>
+          <div class="tips" data-tip="10">10%</div>
+          <div class="tips" data-tip="15">15%</div>
+          <div class="tips" data-tip="25">25%</div>
+          <div class="tips" data-tip="50">50%</div>
+          <div id="tip-custom">
+            <input type="number" class="tip-custom" placeholder="Custom" aria-label="enter-custom-tip" />
           </div>
-        </form>
+      </div>
+      <div class="peopleLabel">
+        <label for="people">Number of People</label>
+        <label for="people" class="error">Can't be zero</label>
+      </div>
+      <input type="number" class="input people-input" id="people" name="people" placeholder="0" aria-label="number-of-people" required min="1" /> 
+    </div>
 
-        <!-- People Count Input -->
-        <form class="people-count-form">
-          <label for="people-count">Number of People <span class="warning-text">Can't be zero</span></label>
-          <input class="input-field people-input" type="number" id="people" name="people" placeholder="0" aria-label="number-of-people" required min="1" />
-        </form>
-      </section>
+    <div class="result">
+      <div class="tip-amount">
+        <p>Tip Amount</p>
+        <p class="person">/ person</p>
+      </div>
+      <p class="amount display-tip" id="tip-person">$0.00</p>
+      <div class="total">
+        <p>Total</p>
+        <p class="person">/ person</p>
+      </div>
+      <p class="amount display-total" id="total-person">$0.00</p>
+    </div>
 
-      <!-- Right Section: Display Results -->
-      <section class="results-section">
-        <div class="result">
-          <div class="tip-amount">
-            <p>Tip Amount</p>
-            <p class="person">/ person</p>
-          </div>
-          <p class="amount display-tip">$0.00</p>
-        </div>
-
-        <div class="result">
-          <div class="total">
-            <p>Total</p>
-            <p class="person">/ person</p>
-          </div>
-          <p class="amount display-total">$0.00</p>
-        </div>
-
-        <button id="reset" class="reset-btn" aria-label="reset" disabled>Reset</button>
-      </section>
-    </section>
-  </main>
+    <div class="reset" id="reset">Reset</div>
+  </div>
 
   <footer>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
