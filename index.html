@@ -11,34 +11,35 @@
 </head>
 <body>
   <div class="container">
-    <label for="bill">Bill</label>
-    <input type="number" id="bill" placeholder="0" />
+    <label for="bill" class="label-title">Bill</label>
+    <input type="number" id="bill" class="bill-input" placeholder="0" />
 
-    <label>Select Tip %</label>
-    <div class="tip-buttons">
-      <button class="tip-btn" data-tip="5">5%</button>
-      <button class="tip-btn" data-tip="10">10%</button>
-      <button class="tip-btn" data-tip="15">15%</button>
-      <button class="tip-btn" data-tip="25">25%</button>
-      <button class="tip-btn" data-tip="50">50%</button>
-      <input type="number" id="custom-tip" placeholder="Custom" />
+    <label class="label-title select">Select Tip %</label>
+    <div class="tip-buttons tip-btns">
+      <button class="tip-btn five" data-tip="5">5%</button>
+      <button class="tip-btn ten" data-tip="10">10%</button>
+      <button class="tip-btn fifteen" data-tip="15">15%</button>
+      <button class="tip-btn twenty-five" data-tip="25">25%</button>
+      <button class="tip-btn fifty" data-tip="50">50%</button>
+      <input type="number" id="custom-tip" class="custom-input" placeholder="Custom" />
     </div>
 
-    <label for="people">Number of People</label>
-    <input type="number" id="people" placeholder="0" />
+    <label for="people" class="label-title num">Number of People</label>
+    <input type="number" id="people" class="numOfPeople-input" placeholder="0" />
+    <p class="error-message">Can't be zero</p>
 
-    <div class="results">
-      <div>
-        <p>Tip Amount <span>/ person</span></p>
-        <p id="tip">$0.00</p>
+    <div class="results perPerson-input">
+      <div class="amount-col">
+        <p class="amount-label">Tip Amount <span class="sub-label">/ person</span></p>
+        <p id="tip" class="amount-input">$0.00</p>
       </div>
-      <div>
-        <p>Total <span>/ person</span></p>
-        <p id="total-person">$0.00</p>
+      <div class="total-col">
+        <p class="total-label">Total <span class="sub-label">/ person</span></p>
+        <p id="total-person" class="total-input">$0.00</p>
       </div>
     </div>
 
-    <button id="reset">Reset</button>
+    <button id="reset" class="reset-button">Reset</button>
   </div>
 
   <div class="attribution">
