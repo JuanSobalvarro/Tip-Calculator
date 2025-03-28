@@ -1,35 +1,65 @@
-/*
-* This script is used for the tip calculator application.
-*/
-
+// Function to calculate tip and total
 function calculateData(bill, tip_percentage, people) {
-    // Validate inputs
+    if (isNaN(bill) || isNaN(tip_percentage) || isNaN(people) || bill <= 0 || tip_percentage < 0 || people <= 0) {
+        return { error: "Invalid input" };
+    }
 
-    if (isNaN(bill) || isNaN(tip_percentage) || isNaN(people)) {
-        return { error: "Invalid input" };
+    if (bill < 0 || people < 0 || tip_percentage < 0) {
+        return { error: "Please enter valid values." };
     }
-    if (bill < 0 || tip_percentage < 0 || people <= 0) {
-        return { error: "Invalid input" };
+    if (people === 0) {
+        return { error: "Number of people cannot be zero." };
     }
-    // Calculate tip and total
+
     const tip = (bill * tip_percentage) / 100;
     const total = bill + tip;
-    // Calculate per person amount
     const perPerson = total / people;
 
     return { tip: tip.toFixed(2), total: total.toFixed(2), perPerson: perPerson.toFixed(2) };
-
 }
 
-function updateUI(tip, total, perPerson) {
-    // Update the UI with the calculated values
+// Function to update the UI
+function updateUI(tip, total) {
     document.getElementById("tip").innerText = `$${tip}`;
     document.getElementById("total").innerText = `$${total}`;
-    document.getElementById("perPerson").innerText = `$${perPerson}`;
 }
+
+// Function to reset the UI
 function resetUI() {
-    // Reset the UI to default values
+    document.getElementById("bill").value = "";
+    document.getElementById("custom-tip").value = "";
+    document.getElementById("people").value = "";
     document.getElementById("tip").innerText = "$0.00";
     document.getElementById("total").innerText = "$0.00";
-    document.getElementById("perPerson").innerText = "$0.00";
 }
+
+// Event listeners
+document.querySelectorAll(".tip-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        const bill = parseFloat(document.getElementById("bill").value);
+        const tip_percentage = parseFloat(button.getAttribute("data-tip"));
+        const people = parseInt(document.getElementById("people").value);
+
+        const result = calculateData(bill, tip_percentage, people);
+        if (!result.error) {
+            updateUI(result.tip, result.total);
+        } else {
+            alert(result.error);
+        }
+    });
+});
+
+document.getElementById("custom-tip").addEventListener("input", () => {
+    const bill = parseFloat(document.getElementById("bill").value);
+    const tip_percentage = parseFloat(document.getElementById("custom-tip").value);
+    const people = parseInt(document.getElementById("people").value);
+
+    const result = calculateData(bill, tip_percentage, people);
+    if (!result.error) {
+        updateUI(result.tip, result.total);
+    } else {
+        alert(result.error);
+    }
+});
+
+document.getElementById("reset").addEventListener("click", resetUI);
