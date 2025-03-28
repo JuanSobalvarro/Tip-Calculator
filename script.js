@@ -1,14 +1,17 @@
 // Function to calculate tip and total
 function calculateData(bill, tip_percentage, people) {
     if (isNaN(bill) || isNaN(tip_percentage) || isNaN(people) || bill <= 0 || tip_percentage < 0 || people <= 0) {
-        return { error: "Invalid input" };
+        return { error: "Invalid inputs" };
     }
 
-    if (bill < 0 || people < 0 || tip_percentage < 0) {
-        return { error: "Please enter valid values." };
+    if (bill < 0) {
+        return { error: "Bill amount cannot be negative." };
     }
-    if (people === 0) {
-        return { error: "Number of people cannot be zero." };
+    if (tip_percentage < 0) {
+        return { error: "Tip percentage cannot be negative." };
+    }
+    if (people <= 0) {
+        return { error: "The number of people should be 1 on more." };
     }
 
     const tip = (bill * tip_percentage) / 100;
