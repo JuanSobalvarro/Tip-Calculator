@@ -22,9 +22,9 @@ function calculateData(bill, tip_percentage, people) {
 }
 
 // Function to update the UI
-function updateUI(tip, total) {
+function updateUI(tip, total_person) {
     document.getElementById("tip").innerText = `$${tip}`;
-    document.getElementById("total").innerText = `$${total}`;
+    document.getElementById("total-person").innerText = `$${total_person}`;
 }
 
 // Function to reset the UI
@@ -33,7 +33,7 @@ function resetUI() {
     document.getElementById("custom-tip").value = "";
     document.getElementById("people").value = "";
     document.getElementById("tip").innerText = "$0.00";
-    document.getElementById("total").innerText = "$0.00";
+    document.getElementById("total-person").innerText = "$0.00";
 }
 
 // Event listeners
@@ -45,7 +45,7 @@ document.querySelectorAll(".tip-btn").forEach(button => {
 
         const result = calculateData(bill, tip_percentage, people);
         if (!result.error) {
-            updateUI(result.tip, result.total);
+            updateUI(result.tip, result.perPerson);
         } else {
             alert(result.error);
         }
