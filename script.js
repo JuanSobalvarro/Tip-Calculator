@@ -1,6 +1,6 @@
 // Function to calculate tip and total
 function calculateData(bill, tip_percentage, people) {
-    if (isNaN(bill) || isNaN(tip_percentage) || isNaN(people) || bill <= 0 || tip_percentage < 0 || people <= 0) {
+    if (isNaN(bill) || isNaN(tip_percentage) || isNaN(people)) {
         return { error: "Invalid inputs" };
     }
 
