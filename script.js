@@ -11,7 +11,7 @@ function calculateData(bill, tip_percentage, people) {
         return { error: "Tip percentage cannot be negative." };
     }
     if (people <= 0) {
-        return { error: "The number of people should be 1 on more." };
+        return { error: "The number of people should be 1 or more." };
     }
 
     const tip = (bill * tip_percentage) / 100;
@@ -23,8 +23,8 @@ function calculateData(bill, tip_percentage, people) {
 
 // Function to update the UI
 function updateUI(tip, total_person) {
-    document.getElementById("tip").innerText = `$${tip}`;
-    document.getElementById("total-person").innerText = `$${total_person}`;
+    document.querySelector(".display-tip").innerText = `$${tip}`;
+    document.querySelector(".display-total").innerText = `$${total_person}`;
 }
 
 // Function to reset the UI
@@ -32,8 +32,9 @@ function resetUI() {
     document.getElementById("bill").value = "";
     document.getElementById("custom-tip").value = "";
     document.getElementById("people").value = "";
-    document.getElementById("tip").innerText = "$0.00";
-    document.getElementById("total-person").innerText = "$0.00";
+    document.querySelector(".display-tip").innerText = "$0.00";
+    document.querySelector(".display-total").innerText = "$0.00";
+    document.getElementById("reset").disabled = true;
 }
 
 // Event listeners
@@ -46,6 +47,7 @@ document.querySelectorAll(".tip-btn").forEach(button => {
         const result = calculateData(bill, tip_percentage, people);
         if (!result.error) {
             updateUI(result.tip, result.perPerson);
+            document.getElementById("reset").disabled = false;
         } else {
             alert(result.error);
         }
@@ -60,6 +62,7 @@ document.getElementById("custom-tip").addEventListener("input", () => {
     const result = calculateData(bill, tip_percentage, people);
     if (!result.error) {
         updateUI(result.tip, result.total);
+        document.getElementById("reset").disabled = false;
     } else {
         alert(result.error);
     }

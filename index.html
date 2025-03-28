@@ -1,51 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tip Calculator App</title>
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link href="./styles.css" rel="stylesheet" type="text/css">
-
-  <title>Frontend Mentor | Tip calculator app</title>
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
+
 <body>
-  <div class="container">
-    <label for="bill" class="label-title">Bill</label>
-    <input type="number" id="bill" class="bill-input" placeholder="0" />
+  <main>
+    <!-- Logo -->
+    <header>
+      <h1><img src="./images/logo.svg" alt="logo-for-calculator" class="logo" /></h1>
+    </header>
 
-    <label class="label-title select">Select Tip %</label>
-    <div class="tip-buttons tip-btns">
-      <button class="tip-btn five" data-tip="5">5%</button>
-      <button class="tip-btn ten" data-tip="10">10%</button>
-      <button class="tip-btn fifteen" data-tip="15">15%</button>
-      <button class="tip-btn twenty-five" data-tip="25">25%</button>
-      <button class="tip-btn fifty" data-tip="50">50%</button>
-      <input type="number" id="custom-tip" class="custom-input" placeholder="Custom" />
-    </div>
+    <!-- Main Content -->
+    <section class="tip-calculator">
+      <!-- Left Section: Input Form -->
+      <section class="input-section">
+        <form id="bill-form" class="input-container">
+          <label for="bill-amount">Bill</label>
+          <input class="input-field bill-input" type="number" name="amount" id="bill" placeholder="0" aria-label="bill-amount" min="0" />
+        </form>
 
-    <label for="people" class="label-title num">Number of People</label>
-    <input type="number" id="people" class="numOfPeople-input" placeholder="0" />
-    <p class="error-message">Can't be zero</p>
+        <!-- Tip Percentage Selection -->
+        <form class="tip-selection">
+          <label>Select Tip %</label>
+          <div class="tip">
+            <button type="button" class="tip-btn" data-tip="5">5%</button>
+            <button type="button" class="tip-btn" data-tip="10">10%</button>
+            <button type="button" class="tip-btn" data-tip="15">15%</button>
+            <button type="button" class="tip-btn" data-tip="25">25%</button>
+            <button type="button" class="tip-btn" data-tip="50">50%</button>
+            <input id="custom-tip" class="custom-tip" type="number" max="100" placeholder="Custom" aria-label="enter-custom-tip" />
+          </div>
+        </form>
 
-    <div class="results perPerson-input">
-      <div class="amount-col">
-        <p class="amount-label">Tip Amount <span class="sub-label">/ person</span></p>
-        <p id="tip" class="amount-input">$0.00</p>
-      </div>
-      <div class="total-col">
-        <p class="total-label">Total <span class="sub-label">/ person</span></p>
-        <p id="total-person" class="total-input">$0.00</p>
-      </div>
-    </div>
+        <!-- People Count Input -->
+        <form class="people-count-form">
+          <label for="people-count">Number of People <span class="warning-text">Can't be zero</span></label>
+          <input class="input-field people-input" type="number" id="people" name="people" placeholder="0" aria-label="number-of-people" required min="1" />
+        </form>
+      </section>
 
-    <button id="reset" class="reset-button">Reset</button>
-  </div>
+      <!-- Right Section: Display Results -->
+      <section class="results-section">
+        <div class="result">
+          <div class="tip-amount">
+            <p>Tip Amount</p>
+            <p class="person">/ person</p>
+          </div>
+          <p class="amount display-tip">$0.00</p>
+        </div>
 
-  <div class="attribution">
+        <div class="result">
+          <div class="total">
+            <p>Total</p>
+            <p class="person">/ person</p>
+          </div>
+          <p class="amount display-total">$0.00</p>
+        </div>
+
+        <button id="reset" class="reset-btn" aria-label="reset" disabled>Reset</button>
+      </section>
+    </section>
+  </main>
+
+  <footer>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Juan Sobalvarro</a>.
-  </div>
+    Coded by <a href="https://github.com/JuanSobalvarro" target="_blank">Juan Sobalvarro</a>.
+  </footer>
+
+  <script src="./script.js"></script>
 </body>
-<script src="./script.js"></script>
+
 </html>
